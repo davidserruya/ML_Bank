@@ -10,10 +10,10 @@ import xgboost as xgb
 
 
 def split_train_test_mep(data: pd.DataFrame, fraction_test: float = 0.1):
-    """Split Titanic dataset in train and test sets
+    """Split CreditScore dataset in train and test sets
 
     Args:
-        data (pd.DataFrame): Titanic dataset
+        data (pd.DataFrame): CreditScore dataset
         y_index (int, optional): Positional index for target variable.
         fraction_test (float, optional):
             Fraction of observation dedicated to test dataset.
@@ -65,8 +65,8 @@ def build_pipeline(numeric_features=['Age', 'Annual_Income', 'Monthly_Inhand_Sal
     )
 
     # Index mapping for categorical features to use in SMOTENC
-    X = pd.DataFrame(columns=numeric_features + categorical_features)  # Mock to generate column indices
-    categorical_indices = [X.columns.get_loc(name) for name in categorical_features]
+    #X = pd.DataFrame(columns=numeric_features + categorical_features)  # Mock to generate column indices
+    #categorical_indices = [X.columns.get_loc(name) for name in categorical_features]
 
     preprocessor = ColumnTransformer(
         transformers=[
@@ -77,7 +77,7 @@ def build_pipeline(numeric_features=['Age', 'Annual_Income', 'Monthly_Inhand_Sal
 
     pipe = ImbPipeline(
         [
-            ('smote', SMOTENC(categorical_features=categorical_indices, random_state=42, k_neighbors=3)),
+            ('smote', SMOTENC(categorical_features=categorical_features, random_state=42, k_neighbors=3)),
             ('preprocessor', preprocessor),
             ('classifier', xgb.XGBClassifier(n_estimators=n_trees, eval_metric='mlogloss'))
         ]

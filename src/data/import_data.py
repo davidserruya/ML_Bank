@@ -2,7 +2,6 @@ import os
 import yaml
 import pandas as pd
 
-
 def import_yaml_config(filename: str = "toto.yaml") -> dict:
     dict_config = {}
     if os.path.exists(filename):
@@ -12,13 +11,13 @@ def import_yaml_config(filename: str = "toto.yaml") -> dict:
 
 
 def import_data(path: str) -> pd.DataFrame:
-    """Import Titanic datasets
+    """Import CreditScore datasets
     Args:
         path (str): File location
     Returns:
-        pd.DataFrame: Titanic dataset
+        pd.DataFrame: CreditScore dataset
     """
 
     data = pd.read_csv(path)
-    data = data.drop(columns=['ID','Customer_ID','Name','Credit_Mix','Credit_Score','SSN','Type_of_Loan','Payment_of_Min_Amount'])
+    data = data.drop(columns=['ID','Customer_ID','Name','Credit_Mix','SSN','Type_of_Loan','Payment_of_Min_Amount'])
     return data

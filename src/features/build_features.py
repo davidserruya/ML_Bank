@@ -1,7 +1,5 @@
 import pandas as pd
 
-
-
 def create_interaction_feature(data: pd.DataFrame) -> pd.DataFrame:
     """
     Create a new feature by interacting two existing features.
@@ -26,8 +24,6 @@ def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
     """
     # Dropping rows where the target variable is missing
     data = data.dropna(subset=['Credit_Score'])
-    # Dropping irrelevant columns
-    data = data.drop(['ID', 'Customer_ID', 'Name', 'Credit_Mix', 'Credit_Score', 'SSN', 'Type_of_Loan', 'Payment_of_Min_Amount'], axis=1)
     return data
 
 def feature_engineering(data: pd.DataFrame) -> pd.DataFrame:

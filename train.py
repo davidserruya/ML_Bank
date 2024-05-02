@@ -1,5 +1,5 @@
 """
-Prediction de la survie d'un individu sur le Titanic
+Prediction de la survie d'un individu sur le CreditScore
 """
 
 # GESTION ENVIRONNEMENT --------------------------------
@@ -18,7 +18,7 @@ import src.models.train_evaluate as te
 # PARAMETRES -------------------------------
 
 # Paramètres ligne de commande
-parser = argparse.ArgumentParser(description="Paramètres du random forest")
+parser = argparse.ArgumentParser(description="Paramètres du XGBoost")
 parser.add_argument("--n_trees", type=int, default=300, help="Nombre d'arbres")
 parser.add_argument("--appli", type=str, default="appli21", help="Application number")
 args = parser.parse_args()
@@ -26,12 +26,12 @@ args = parser.parse_args()
 # Paramètres YAML
 config = imp.import_yaml_config("configuration/config.yaml")
 base_url = (
-    "https://minio.lab.sspcloud.fr/projet-formation/ensae-reproductibilite/data/raw"
+    "https://minio.lab.sspcloud.fr/marcosamori/creditscore/data/raw/"
 )
 API_TOKEN = config.get("jeton_api")
-LOCATION_TRAIN = config.get("train_path", f"{base_url}/train.csv")
-LOCATION_TEST = config.get("test_path", f"{base_url}/test.csv")
-TEST_FRACTION = config.get("test_fraction", 0.1)
+LOCATION_TRAIN = config.get("train_path")
+LOCATION_TEST = config.get("test_path")
+TEST_FRACTION = config.get("test_fraction")
 N_TREES = args.n_trees
 APPLI_ID = args.appli
 EXPERIMENT_NAME = "CreditScoreExperiment"
@@ -44,7 +44,7 @@ credit_raw = imp.import_data(LOCATION_TRAIN)
 credit_intermediate = bf.feature_engineering(credit_raw)
 
 
-train, test = te.split_train_test_titanic(
+train, test = te.split_train_test_mep(
     credit_intermediate, fraction_test=TEST_FRACTION
 )
 X_train, y_train = train.drop("Credit_Score", axis="columns"), train["Credit_Score"]
@@ -64,7 +64,7 @@ log_local_data(y_train, "y_train")
 log_local_data(y_test, "y_test")
 
 
-# MODELISATION: RANDOM FOREST ----------------------------
+# MODELISATION: XGBOOST ----------------------------
 
 pipe = te.build_pipeline(numeric_features=['Age', 'Annual_Income', 'Monthly_Inhand_Salary', 'Num_Bank_Accounts', 'Num_Credit_Card',
                                      'Interest_Rate', 'Num_of_Loan', 'Delay_from_due_date', 'Num_of_Delayed_Payment', 'Changed_Credit_Limit',
@@ -86,7 +86,8 @@ pipe_cross_validation = GridSearchCV(
     pipe, 
     param_grid=param_grid, 
     cv=5, 
-    scoring=["accuracy", "precision", "recall", "f1"], 
+    scoring=["accuracy", "precision", "recall", "f1"],
+    refit="accuracy",
     verbose=1, 
     n_jobs=-1
 )
