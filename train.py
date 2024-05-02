@@ -81,12 +81,19 @@ param_grid = {
     'classifier__subsample': [0.8, 1]
 }
 
+scoring = {
+    "accuracy": "accuracy",
+    "precision": "precision_macro",
+    "recall": "recall_macro",
+    "f1": "f1_macro"
+}
+
 
 pipe_cross_validation = GridSearchCV(
     pipe, 
     param_grid=param_grid, 
     cv=5, 
-    scoring=["accuracy", "precision", "recall", "f1"],
+    scoring=scoring,
     refit="accuracy",
     verbose=1, 
     n_jobs=-1

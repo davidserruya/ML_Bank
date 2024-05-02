@@ -20,4 +20,5 @@ def import_data(path: str) -> pd.DataFrame:
 
     data = pd.read_csv(path)
     data = data.drop(columns=['ID','Customer_ID','Name','Credit_Mix','SSN','Type_of_Loan','Payment_of_Min_Amount'])
+    data['Credit_Score'] = data['Credit_Score'].replace({'Poor': 0, 'Standard': 1, 'Good': 2})
     return data
