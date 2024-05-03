@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartbank 
+  labels:
+    app: smartbank
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: smartbank
+  template:
+    metadata:
+      labels:
+        app: smartbank
+    spec:
+      containers:
+      - name: smartbank
+        image: marcosamori2/smartbank:latest
+        ports:
+        - containerPort: 5000

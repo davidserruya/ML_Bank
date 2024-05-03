@@ -1,7 +1,7 @@
 import mlflow
 
 # Set the experiment name to something relevant to your project
-mlflow.set_experiment(experiment_name="CreditScoreExperiment")
+mlflow.set_experiment(experiment_name="smartbank")
 
 def log_gsvc_to_mlflow(gscv, mlflow_experiment_name):
     """Log a scikit-learn trained GridSearchCV object as an MLflow experiment."""
@@ -28,4 +28,4 @@ def log_gsvc_to_mlflow(gscv, mlflow_experiment_name):
             mlflow.log_param("project_detail", "Specific project detail here")
 
 # Example usage with your pipeline and experiment name
-log_gsvc_to_mlflow(gscv=pipe_cross_validation, mlflow_experiment_name="CreditScoreExperiment")
+log_gsvc_to_mlflow(gscv=pipe_cross_validation, mlflow_experiment_name="smartbank")

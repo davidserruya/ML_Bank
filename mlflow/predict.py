@@ -2,7 +2,7 @@ import mlflow
 import pandas as pd
 
 
-model_name = "credit_score_model"
+model_name = "smartbank"
 model_version = 1
 
 loaded_model = mlflow.pyfunc.load_model(
