@@ -27,4 +27,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: davidserruya14/smartbank:latest
+          tags: marcosamori2/smartbank:latest
