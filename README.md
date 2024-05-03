@@ -1,4 +1,4 @@
-# ML_Bank                    <img src="https://camo.githubusercontent.com/6c98e3ffde19edc990fdc90b500adc614226e333a73b20c7b0fbb52d29c95de8/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f7468756d622f652f65632f4c4f474f2d454e5341452e706e672f39303070782d4c4f474f2d454e5341452e706e67" alt="Description de l'image" width="200"/>
+# ML_Bank [![Construction image Docker](https://github.com/marco-samori/ML_Bank/actions/workflows/prod.yml/badge.svg)](https://github.com/marco-samori/ML_Bank/actions/workflows/prod.yml) <img src="https://camo.githubusercontent.com/6c98e3ffde19edc990fdc90b500adc614226e333a73b20c7b0fbb52d29c95de8/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f7468756d622f652f65632f4c4f474f2d454e5341452e706e672f39303070782d4c4f474f2d454e5341452e706e67" alt="Description de l'image" width="200"/>
 
 ## Topic</a>
 
