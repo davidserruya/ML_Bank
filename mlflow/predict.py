@@ -29,11 +29,10 @@ def create_data(
     monthly_balance: float = 1000,
     interest_rate_x_outstanding_debt: float = 500,
     occupation: str = 'Engineer',
-    month: str = 'January',
+    month: int = 1,
     payment_behaviour: str = 'Good'
-) -> pd.DataFrame:
+) -> str:
     """
-    Create a DataFrame to input into the credit scoring model.
     """
 
     df = pd.DataFrame({

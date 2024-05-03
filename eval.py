@@ -1,6 +1,7 @@
 import pandas as pd
 import mlflow
 from sklearn.metrics import confusion_matrix, accuracy_score
+from joblib import load
 
 logged_model = "runs:/1bdd832cd6334068a5c65247b95807d3/gscv_model"
 
