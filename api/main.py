@@ -12,7 +12,7 @@ from fastapi.responses import JSONResponse
 
 # GET PRODUCTION MODEL -------------
 
-model_name = "SmartBank"
+model_name = "credit_score_model"
 model_version = 1
 model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version}")
 
