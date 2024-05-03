@@ -12,18 +12,17 @@ from fastapi.responses import JSONResponse
 
 # GET PRODUCTION MODEL -------------
 
-model_name = "titanic"
+model_name = "SmartBank"
 model_version = 1
-
-#model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version}")
+model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version}")
 
 
 # USE PRODUCTION MODEL IN APP ----------
 
 # Initialisation de l'application FastAPI
 app = FastAPI(
-    title="Prédiction de survie sur le Titanic",
-    description="<b>Application de prédiction de survie sur le Titanic</b> 🚢 <br>",
+    title="Prédiction d'ouverture de compte",
+    description="<b>Application de prédiction d'ouverture d'un compte bancaire chez SmartBank",
     version="0.1.0"
 )
 
