@@ -36,8 +36,6 @@ N_TREES = args.n_trees
 APPLI_ID = args.appli
 EXPERIMENT_NAME = "CreditScoreExperiment"
 
-print(LOCATION_TRAIN)
-
 # FEATURE ENGINEERING --------------------------------
 
 credit_raw = imp.import_data(LOCATION_TRAIN)
