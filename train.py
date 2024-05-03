@@ -29,9 +29,9 @@ base_url = (
     "https://minio.lab.sspcloud.fr/marcosamori/creditscore/data/raw/"
 )
 API_TOKEN = config.get("jeton_api")
-LOCATION_TRAIN = config.get("train_path")
-LOCATION_TEST = config.get("test_path")
-TEST_FRACTION = config.get("test_fraction")
+LOCATION_TRAIN = config.get("train_path", f"{base_url}/train.csv")
+LOCATION_TEST = config.get("test_path", f"{base_url}/test.csv")
+TEST_FRACTION = config.get("test_fraction", 0.1)
 N_TREES = args.n_trees
 APPLI_ID = args.appli
 EXPERIMENT_NAME = "CreditScoreExperiment"
