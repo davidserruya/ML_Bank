@@ -1,8 +1,5 @@
 # ML_Bank                    <img src="https://camo.githubusercontent.com/6c98e3ffde19edc990fdc90b500adc614226e333a73b20c7b0fbb52d29c95de8/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f7468756d622f652f65632f4c4f474f2d454e5341452e706e672f39303070782d4c4f474f2d454e5341452e706e67" alt="Description de l'image" width="200"/>
 
-Découvrir de manière interactive le modèle sur [ce site](https://ensae-reproductibilite.github.io/application-correction/)
-ou par le biais de l'[API](https://titanic.kub.sspcloud.fr/docs).
-
 ## Topic</a>
 
 An application of a fictitious online bank called SmartBank, which allows checking the eligibility of a customer to open an account by answering a form. We test their eligibility using an XGBoost machine learning model.
