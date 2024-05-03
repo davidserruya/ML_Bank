@@ -1,4 +1,4 @@
-# ML_Bank [![Construction image Docker](https://github.com/ensae-reproductibilite/application-correction/actions/workflows/prod.yml/badge.svg)](https://github.com/ensae-reproductibilite/application-correction/actions/workflows/prod.yml)
+# ML_Bank 
 
 
 Découvrir de manière interactive le modèle sur [ce site](https://ensae-reproductibilite.github.io/application-correction/)
