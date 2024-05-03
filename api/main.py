@@ -12,7 +12,6 @@ from fastapi.responses import JSONResponse
 
 # GET PRODUCTION MODEL -------------
 
-model = load('../model.joblib')
 model_name = "titanic"
 model_version = 1
 
