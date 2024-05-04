@@ -1,3 +1,4 @@
+# Creating MLflow deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +16,21 @@ spec:
         app: smartbank
     spec:
       containers:
-      - name: smartbank
-        image: marcosamori2/smartbank:latest
-        ports:
-        - containerPort: 5000
+        - name: smartbank
+          image: marcosamori2/smartbank:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MLFLOW_TRACKING_URI
+              value: https://user-ppeltier75-mlflow.user.lab.sspcloud.fr
+            - name: MLFLOW_MODEL_NAME
+              value: smartbank
+            - name: MLFLOW_MODEL_VERSION
+              value: "2"
+          resources:
+            limits: 
+              memory: "2Gi"
+              cpu: "1000m"
+
+

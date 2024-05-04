@@ -102,11 +102,7 @@ pipe_cross_validation = GridSearchCV(
 
 pipe_cross_validation.fit(X_train, y_train)
 
-# Configurer l'URI de suivi MLflow
-mlflow.set_tracking_uri("https://user-ppeltier75-mlflow.user.lab.sspcloud.fr/")
-
-
-mlog.log_gsvc_to_mlflow(pipe_cross_validation, EXPERIMENT_NAME)
+mlog.log_gsvc_to_mlflow(pipe_cross_validation, EXPERIMENT_NAME, APPLI_ID)
 
 pipe = pipe_cross_validation.best_estimator_
 

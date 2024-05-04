@@ -3,7 +3,7 @@ import pandas as pd
 
 
 model_name = "smartbank"
-model_version = 1
+model_version = 2
 
 loaded_model = mlflow.pyfunc.load_model(
     model_uri=f"models:/{model_name}/{model_version}"
@@ -30,7 +30,7 @@ def create_data(
     interest_rate_x_outstanding_debt: float = 500,
     occupation: str = 'Engineer',
     month: int = 1,
-    payment_behaviour: str = 'Good'
+    payment_behaviour: str = 'Low_spent_Small_value_payments'
 ) -> str:
     """
     """
