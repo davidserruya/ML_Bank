@@ -1,4 +1,4 @@
-"""A simple API to expose our trained RandomForest model for Tutanic survival."""
+"""A simple API to expose our trained XGBoost model for Credit Scoring Algorithm."""
 import requests
 from fastapi import FastAPI
 from joblib import load
@@ -22,10 +22,17 @@ model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version
 # Initialisation de l'application FastAPI
 app = FastAPI(
     title="Prédiction d'ouverture de compte",
-    description="<b>Application de prédiction d'ouverture d'un compte bancaire chez SmartBank",
+    description="<b>Application de prédiction d'ouverture d'un compte bancaire chez SmartBank<b>",
     version="0.1.0"
 )
 
+app = FastAPI(
+    title="Prédiction d'ouverture de compte chez SmartBank",
+    description=
+    "<b>Application de prédiction d'ouverture d'un compte bancaire chez SmartBank</b> 💸 <br>Une version par API pour faciliter la réutilisation du modèle 🚀" +\
+        "<br><br><img src=\"https://blogger.googleusercontent.com/img/a/AVvXsEjW2-_wuDtSFuJvR0fJMFXBMBIgLq3fZWB8uirMjqcdt5I4EnPCJpdN8JGI_E_L69tCakUP8jvPJ_z2lQu90q80lTjbkupJuon5BJaEW3PAA0joTKjmHdcQd60V2DpeLC6K_6GyGCi4TwojwlKa7zdgefUpukfzdrq5mJgBZh2J2fA5Z-cX05F3j8yuyQg" width=\"200\">" +\
+        "<br>Version avec le modèle de prod"
+    )
 
 # Page d'accueil
 @app.get("/", tags=["Welcome"])
