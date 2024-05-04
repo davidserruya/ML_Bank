@@ -24,9 +24,9 @@ def call_api(data):
 
 #Functions of navbar menu
 def do_home():
-    HtmlFile = open("home_page.html", 'r', encoding='utf-8')
+    HtmlFile = open("streamlit_interface/home_page.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
-    components.html(source_code,height=1100)   
+    components.html(source_code,height=1300)   
 
 
 def do_form():
