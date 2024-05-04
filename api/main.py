@@ -18,14 +18,6 @@ model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version
 
 
 # USE PRODUCTION MODEL IN APP ----------
-
-# Initialisation de l'application FastAPI
-app = FastAPI(
-    title="Prédiction d'ouverture de compte",
-    description="<b>Application de prédiction d'ouverture d'un compte bancaire chez SmartBank<b>",
-    version="0.1.0"
-)
-
 app = FastAPI(
     title="Prédiction d'ouverture de compte chez SmartBank",
     description=
