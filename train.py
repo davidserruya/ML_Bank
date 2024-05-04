@@ -13,6 +13,7 @@ import src.data.import_data as imp
 import src.features.build_features as bf
 import src.models.log as mlog
 import src.models.train_evaluate as te
+import mlflow
 
 
 # PARAMETRES -------------------------------
@@ -34,7 +35,7 @@ LOCATION_TEST = config.get("test_path", f"{base_url}/test.csv")
 TEST_FRACTION = config.get("test_fraction", 0.1)
 N_TREES = args.n_trees
 APPLI_ID = args.appli
-EXPERIMENT_NAME = "CreditScoreExperiment"
+EXPERIMENT_NAME = "smartbank"
 
 # FEATURE ENGINEERING --------------------------------
 
@@ -101,7 +102,11 @@ pipe_cross_validation = GridSearchCV(
 
 pipe_cross_validation.fit(X_train, y_train)
 
-mlog.log_gsvc_to_mlflow(pipe_cross_validation, EXPERIMENT_NAME, APPLI_ID)
+# Configurer l'URI de suivi MLflow
+mlflow.set_tracking_uri("https://user-ppeltier75-mlflow.user.lab.sspcloud.fr/")
+
+
+mlog.log_gsvc_to_mlflow(pipe_cross_validation, EXPERIMENT_NAME)
 
 pipe = pipe_cross_validation.best_estimator_
 
