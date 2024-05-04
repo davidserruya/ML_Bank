@@ -90,7 +90,7 @@ Furthermore, we employed grid search with cross-validation to search for the bes
 ## Demonstration <a name="demonstration"></a>
 
 Discover the model interactively on [this website](https://ensae-reproductibilite.github.io/application-correction/) 
-or through the [API](https://titanic.kub.sspcloud.fr/docs).
+or through the [API](https://smartbank.kub.sspcloud.fr/docs#/).
 
 ## Reusability <a name="reusability"></a>
 
