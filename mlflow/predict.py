@@ -6,7 +6,7 @@ model_name = "smartbank"
 model_version = 2
 
 loaded_model = mlflow.pyfunc.load_model(
-    model_uri=f"models:/{model_name}/{model_version}"
+    "runs:/0796ef00e0ec48c8b1b1e5ed18ea4c93/best_model"
 )
 
 def create_data(

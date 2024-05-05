@@ -8,7 +8,7 @@ spec:
     parameters:
       # The MLflow tracking server is responsible to log the hyper-parameter and model metrics.
       - name: mlflow-tracking-uri
-        value: https://user-ppeltier75-argo-workflows.user.lab.sspcloud.fr/  
+        value: https://user-ppeltier75-argo-workflows.user.lab.sspcloud.fr 
       - name: mlflow-experiment-name
         value: smartbank
       - name: model-training-conf-list

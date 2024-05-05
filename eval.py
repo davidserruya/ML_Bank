@@ -3,7 +3,7 @@ import mlflow
 from sklearn.metrics import confusion_matrix, accuracy_score
 from joblib import load
 
-logged_model = "runs:/0796ef00e0ec48c8b1b1e5ed18ea4c93/gscv_model"
+logged_model = "runs:/0796ef00e0ec48c8b1b1e5ed18ea4c93/best_model"
 
 # Load model as a PyFuncModel.
 loaded_model = mlflow.pyfunc.load_model(logged_model)
