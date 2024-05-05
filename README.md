@@ -40,11 +40,6 @@ project_root/
 │   ├── main.py                   # Main code for the API
 │   └── run.sh                    # Script for running the API
 │
-├── deployment/
-│   ├── deployment.yaml           # Kubernetes deployment configuration
-│   ├── ingress.yaml              # Ingress rules configuration
-│   └── service.yaml              # Kubernetes service configuration
-│
 ├── mlflow/
 │   ├── predict.py                # Script for making predictions using ML models
 │   ├── record.py                 # Script for recording model training experiments
@@ -79,6 +74,8 @@ project_root/
 ├── train.py                      # Python script for train model
 └── requirements.txt              # File listing Python dependencies
 ```
+We set up ArgoCD to automate the deployment process by creating a GitOps repository named 'ML_Bank_gitops' containing deployment configurations and leveraging its capabilities to ensure that any changes in the repository trigger automatic updates to the Kubernetes deployment.
+
 ## Model Used <a name="model-used"></a>
 
 For our project, we utilized an XGBoost model to predict the credit scores of bank clients. XGBoost is a highly effective machine learning algorithm well-suited for classification and regression tasks.
