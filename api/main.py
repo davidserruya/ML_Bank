@@ -21,9 +21,8 @@ model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version
 app = FastAPI(
     title="Prédiction d'ouverture de compte chez SmartBank",
     description=
-    """<b>Application de prédiction d'ouverture d'un compte bancaire chez SmartBank</b> 💸 <br>Une version par API pour faciliter la réutilisation du modèle 🚀" +\
-        "<br><br><img src=\"https://blogger.googleusercontent.com/img/a/AVvXsEjW2-_wuDtSFuJvR0fJMFXBMBIgLq3fZWB8uirMjqcdt5I4EnPCJpdN8JGI_E_L69tCakUP8jvPJ_z2lQu90q80lTjbkupJuon5BJaEW3PAA0joTKjmHdcQd60V2DpeLC6K_6GyGCi4TwojwlKa7zdgefUpukfzdrq5mJgBZh2J2fA5Z-cX05F3j8yuyQg" width=\"200\">" +\
-        "<br>Version avec le modèle de prod"""
+    """<b>Application de prédiction d'ouverture d'un compte bancaire chez SmartBank</b> 💸 <br>Une version par API pour faciliter la réutilisation du modèle 🚀" 
+        "<br><br><img src=\"https://blogger.googleusercontent.com/img/a/AVvXsEjW2-_wuDtSFuJvR0fJMFXBMBIgLq3fZWB8uirMjqcdt5I4EnPCJpdN8JGI_E_L69tCakUP8jvPJ_z2lQu90q80lTjbkupJuon5BJaEW3PAA0joTKjmHdcQd60V2DpeLC6K_6GyGCi4TwojwlKa7zdgefUpukfzdrq5mJgBZh2J2fA5Z-cX05F3j8yuyQg" width=\"200\">"""
     )
 
 # Page d'accueil
