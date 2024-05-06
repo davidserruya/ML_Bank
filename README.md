@@ -51,6 +51,7 @@ project_root/
 │
 ├── streamlit_interface/
 │   ├── home_page.html            # HTML code for the home page of the Streamlit app
+│   ├── contact_us.html           # HTML code for the form result of the Streamlit app
 │   └── main_page.py              # Python code defining the Streamlit application
 │
 ├── src/
@@ -86,8 +87,12 @@ Furthermore, we employed grid search with cross-validation to search for the bes
 
 ## Demonstration <a name="demonstration"></a>
 
-Discover the model interactively on [this website](https://ensae-reproductibilite.github.io/application-correction/) 
+Discover the model interactively on [this website](https://smartbank.streamlit.app/)
 or through the [API](https://smartbank.kub.sspcloud.fr/docs#/).
+
+Watch the demonstration of the deployed website on Streamlit Share:
+
+https://github.com/marco-samori/ML_Bank/assets/56997072/0260306a-a282-463d-888e-7d93cfc26be9
 
 ## Reusability <a name="reusability"></a>
 
@@ -95,7 +100,7 @@ To test this project, the following code is sufficient:
 
 ```python
 pip install -r requirements.txt
-python train.py
+python main.py
 ```
 
 ## Contributors <a name="contributors"></a>
