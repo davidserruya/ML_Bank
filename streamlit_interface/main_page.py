@@ -6,6 +6,7 @@ import streamlit.components.v1 as components
 import pandas as pd
 from streamlit_option_menu import option_menu
 import requests
+import os
 
 # Settings
 st.set_page_config(layout="wide")
@@ -14,23 +15,26 @@ st.markdown(""" <style> .block-container {padding-top: 2.5rem; padding-bottom: 0
 
 # Fonction pour envoyer une requête à l'API et afficher la réponse
 def call_api(data):
-    api_url = "https://user-davidserruya-8272-0.user.lab.sspcloud.fr/proxy/5000/predict"
+    api_url = "https://smartbank.kub.sspcloud.fr/predict"
     response = requests.get(api_url, params=data)
     if response.status_code == 200:
         result = response.json()
-        st.write("Prediction:", result)
+        return result
     else:
         st.write("Erreur lors de l'appel à l'API")
+        return None
 
 #Functions of navbar menu
 def do_home():
-    HtmlFile = open("streamlit_interface/home_page.html", 'r', encoding='utf-8')
-    source_code = HtmlFile.read() 
-    components.html(source_code,height=1300)   
+    # Lire le contenu du fichier home_page.html
+    with open("streamlit_interface/home_page.html", 'r', encoding='utf-8') as HtmlFile:
+        source_code = HtmlFile.read()
+    # Afficher le code HTML dans Streamlit
+    components.html(source_code, height=1300) 
 
 
 def do_form():
-
+  result=None
   payment_behaviour_options = [
     'High_spent_Small_value_payments',
     'Low_spent_Large_value_payments',
@@ -68,8 +72,7 @@ def do_form():
          # Every form must have a submit button.
          submitted = st.form_submit_button("Submit")
          if submitted:
-            st.write('dac')
-            df = pd.DataFrame({
+            df = {
             "Age": [age],
             "Annual_Income": [annual_income],
             "Monthly_Inhand_Salary": [monthly_inhand_salary],
@@ -91,16 +94,47 @@ def do_form():
             "Payment_Behaviour": [payment_behaviour],
             "Occupation": [occupation],
             "Month": [month]
-            })
-            st.write('dac2')
-            call_api(df)
-         
-         
-         with col2:
-            col3, col4, col5 = st.columns([2,6,1])
+            }
+            result=call_api(df)
+          
+    with col2:
+        col3, col4, col5 = st.columns([1,6,1])
 
-            with col4:
-              st.write('yo')
+        with col4:
+            if result is not None:
+                if result == 'Poor':
+                    title='Désolé'
+                    message="Nous sommes désolés, mais sur la base de votre dossier actuel, nous ne pouvons pas donner suite à votre demande pour le moment."
+                    button="Découvrir SmartBank"
+                elif result == "Standard":
+                    title='En cours de traitement'
+                    message="Votre demande est en cours de traitement. Nous aimerions échanger davantage avec vous pour mieux comprendre vos besoins. Un de nos représentants prendra contact avec vous sous peu."
+                    button="Contactez nous"
+                elif result == "Good":
+                    st.balloons()
+                    title='Binvenue Chez SmartBank'
+                    message="Félicitations! Vous êtes éligible pour devenir un nouveau client chez SmartBank. Vous recevrez sous peu un e-mail détaillant la procédure à suivre pour finaliser l'ouverture de votre compte."
+                    button="Contactez nous"
+            
+                with open("streamlit_interface/contact_us.html", "r") as file:
+                    html_content = file.read()
+
+                # Remplacement des balises spéciales par les valeurs correspondantes
+                html_content = html_content.replace("{title}", title)
+                html_content = html_content.replace("{message}", message)
+                html_content = html_content.replace("{button}", button)
+
+                # Écriture du contenu mis à jour dans un nouveau fichier HTML
+                with open("streamlit_interface/contact_us_new.html", "w") as file:
+                    file.write(html_content)
+                
+                with open("streamlit_interface/contact_us_new.html", 'r', encoding='utf-8') as HtmlFile:
+                    source_code_form = HtmlFile.read()
+                # Afficher le code HTML dans Streamlit
+                components.html(source_code_form,height=800) 
+            else:
+                st.write("")
+
 
 
 # Display navbar menu 
@@ -118,7 +152,6 @@ if selected=='Home':
 
 else:
     do_form()
-
     
 
 
